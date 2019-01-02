@@ -1,12 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import path from 'path'
-
-console.log(path)
 
 import asyncComponent from '../tools/asyncComponent'
 
-const Test = asyncComponent('../components/Test.jsx')
+const Test = asyncComponent(import('../components/Test.jsx'))
 
 const Router = () => (
 	<Switch>

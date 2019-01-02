@@ -10,13 +10,12 @@ export default function asyncComponent(componentImport) {
       };
     }
 
-    componentDidMount() {
-			import(componentImport)
-				.then(module => {
-					this.setState({
-						component: module.default
-					});
-				})
+    async componentDidMount() {
+			const C = await componentImport
+
+      this.setState({
+        component: C.default
+      });
 
     }
 
