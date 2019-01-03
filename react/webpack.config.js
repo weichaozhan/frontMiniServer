@@ -71,6 +71,7 @@ const webpackConfig = {
   ],
   output: {
     filename: '[name][hash].js',
+    chunkFilename: '[name].bundle.js',
     //__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     path: path.resolve(__dirname, 'dist')
   }
