@@ -52,11 +52,6 @@ const webpackConfig = {
           name: 'react',
           priority: 3,
           reuseExistingChunk: true
-        },
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 1
         }
       }
     }

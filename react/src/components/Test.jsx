@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from "react-router-dom";
 
 class Test extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class Test extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
   }
 
   componentWillUnmount() {
@@ -23,4 +25,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test
+export default withRouter(Test)
