@@ -91,6 +91,6 @@ const server = http.createServer(function(request, response) {
   serveStatic(response, cache, absPath)
 })
 
-server.listen(3001, function () {
-  console.log('Server listening on port 3001')
+server.listen(3002, function () {
+  console.log('Server listening on port 3002')
 })
