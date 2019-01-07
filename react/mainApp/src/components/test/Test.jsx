@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { Button, Table } from 'antd'
 const { Column } = Table
 
+import './test.less'
+
 class Test extends React.Component {
   constructor() {
 		super()
@@ -54,7 +56,7 @@ class Test extends React.Component {
             <a href="javascript:;" onClick={this.clickAction} data-record={JSON.stringify(record)}>action</a>
           )}></Column>
         </Table>
-        <p>Test Text</p>
+        <p className="ttt">Test Text</p>
       </div>
     )
   }

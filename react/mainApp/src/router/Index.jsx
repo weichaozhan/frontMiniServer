@@ -86,7 +86,7 @@ class Router extends React.Component {
 	
 		return (
 			<Switch>
-				<Route path="/" exact component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/Test.jsx')))} />
+				<Route path="/" exact component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/test/Test.jsx')))} />
 				{
 					this.state.routes.map(item => {
 						return (

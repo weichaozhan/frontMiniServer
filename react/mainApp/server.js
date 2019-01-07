@@ -13,8 +13,7 @@ const config = merge(require('./webpack.config.js'), {
 })
 const compiler = webpack(config)
 app.use(history())
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
+
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
 }));

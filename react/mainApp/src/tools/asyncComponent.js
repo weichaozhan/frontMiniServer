@@ -1,3 +1,7 @@
+/**
+ * 懒加载高阶组件
+ * exp: asyncComponent(() => import('../components/Test.jsx'))
+ */
 import React, { Component } from "react";
 
 export default function asyncComponent(importComponent) {
@@ -11,18 +15,18 @@ export default function asyncComponent(importComponent) {
     }
 
     async componentDidMount() {
-			const C = await importComponent()
+			const lazyC = await importComponent()
 
       this.setState({
-        component: C.default
+        component: lazyC.default
       });
 
     }
 
     render() {
-      const C = this.state.component;
+      const LazyC = this.state.component;
 
-      return C ? <C {...this.props} /> : null;
+      return LazyC ? <LazyC {...this.props} /> : null;
     }
   }
 

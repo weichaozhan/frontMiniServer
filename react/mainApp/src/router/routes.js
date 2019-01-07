@@ -5,6 +5,6 @@ import suspenseComponent from '../tools/suspenseComponent'
 export default [
 	{
 		path: '/test',
-		component: suspenseComponent(lazy(() => import('../components/Test.jsx')))
+		component: suspenseComponent(lazy(() => import('../components/test/Test.jsx')))
 	}
 ]

@@ -1,6 +1,7 @@
 const webpack = require('webpack') //访问内置的插件
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const environment = process.env.NODE_ENV
 
 const mainEntry = ['./src/index.js']
@@ -18,18 +19,22 @@ const webpackConfig = {
         use: {
           loader: 'babel-loader'
         }
-      }, {
+      }, 
+      {
         test: /\.(css|less)$/,
         use: [
           {
-            loader: 'style-loader'
-          }, {
+            loader: environment === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          },
+          {
             loader: 'css-loader'
-          }, {
+          }, 
+          {
             loader: 'less-loader'
           }
         ]
-      }, {
+      }, 
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
       }, {
@@ -38,7 +43,6 @@ const webpackConfig = {
       }
     ]
   },
-  devtool: 'source-map',
   optimization: {
     splitChunks: {
       name: true, 
@@ -61,17 +65,15 @@ const webpackConfig = {
           name: 'antd',
           priority: 1,
           reuseExistingChunk: true
-        },
-        commons: {
-          name: "chunk-comomns",
-          minChunks: 2, // 最小共用次数
-          priority: 3,
-          reuseExistingChunk: true
         }
       }
     }
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: true
@@ -89,6 +91,10 @@ const webpackConfig = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   }
+}
+
+if (environment === 'development') {
+  webpackConfig.devtool = 'source-map'
 }
 
 module.exports = webpackConfig
