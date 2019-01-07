@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import {lazy} from 'react'
 
 import suspenseComponent from '../tools/suspenseComponent'
-import asyncComponent from '../tools/asyncComponent'
+// import asyncComponent from '../tools/asyncComponent'
 import routes from './routes.js'
 
 class Router extends React.Component {
@@ -34,6 +34,8 @@ class Router extends React.Component {
 	 * @description 下载模块代码
 	 */
 	load() {
+		if (!window.appData || !window.appData.modules) return 
+
 		const appModules = window.appData.modules
 		const moduleKeys = Object.keys(appModules)
 		const module = location.pathname.split('/')[1]
@@ -47,6 +49,7 @@ class Router extends React.Component {
 			if (isMatch) {
 				// 模块是否已经下载
 				if (modulesLoaded.indexOf(item) < 0) {
+					console.log('sada')
 					this.setState({isLoading: true})
 					const pl = appModules[item].map(item => {
 						return new Promise((resolve, reject) => {
@@ -80,10 +83,10 @@ class Router extends React.Component {
 
 	render() {
 		const isLoading = this.state.isLoading
-		
+	
 		return (
 			<Switch>
-				{/* <Route path="/" exact component={suspenseComponent(lazy(() => import('../components/Test.jsx')))} />
+				<Route path="/" exact component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/Test.jsx')))} />
 				{
 					this.state.routes.map(item => {
 						return (
@@ -93,11 +96,11 @@ class Router extends React.Component {
 				}
 				{
 					isLoading ?
-					<Route component={suspenseComponent(lazy(() => import('../components/Loading.jsx')))} />
+					<Route component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/Loading.jsx')))} />
 					:
-					<Route component={suspenseComponent(lazy(() => import('../components/NoMatch.jsx')))} />
-				} */}
-				<Route path="/" exact component={asyncComponent(() => import('../components/Test.jsx'))} />
+					<Route component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/NoMatch.jsx')))} />
+				}
+				{/* <Route path="/" exact component={asyncComponent(() => import('../components/Test.jsx'))} />
 				{
 					this.state.routes.map(item => {
 						return (
@@ -110,7 +113,7 @@ class Router extends React.Component {
 					<Route component={asyncComponent(() => import('../components/Loading.jsx'))} />
 					:
 					<Route component={asyncComponent(() => import('../components/NoMatch.jsx'))} />
-				}
+				} */}
 			</Switch>
 		)
 	}

@@ -1,13 +1,20 @@
 {
   "presets": [
-    "es2015",
+    [
+      "env",
+      {
+        "targets": ">= ie9",
+        "useBuiltIns": "usage"
+      }
+    ],
     "react",
     "stage-2"
   ],
   "plugins": [
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css" // `style: true` 会加载 less 文件
     }]
   ]
 }

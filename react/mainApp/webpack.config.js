@@ -41,15 +41,30 @@ const webpackConfig = {
   devtool: 'source-map',
   optimization: {
     splitChunks: {
-      name: true, chunks: 'all', 
+      name: true, 
+      chunks: 'all', 
       minSize: 10000, 
-      maxInitialRequests: 4, // 首页最大并行下载数
+      maxInitialRequests: 5, // 首页最大并行下载数
       cacheGroups: {
         react: {
           test: (module) => {
-            return /react/.test(module.context);
+            return /[\\/]node_modules[\\/].*react.*/.test(module.context);
           },
           name: 'react',
+          priority: 1,
+          reuseExistingChunk: true
+        },
+        antd: {
+          test: (module) => {
+            return /[\\/]node_modules[\\/].*antd/.test(module.context);
+          },
+          name: 'antd',
+          priority: 1,
+          reuseExistingChunk: true
+        },
+        commons: {
+          name: "chunk-comomns",
+          minChunks: 2, // 最小共用次数
           priority: 3,
           reuseExistingChunk: true
         }
@@ -68,7 +83,7 @@ const webpackConfig = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
-    filename: '[name][hash].js',
+    filename: '[name]-[hash].js',
     chunkFilename: '[name].bundle.js',
     //__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     path: path.resolve(__dirname, 'dist'),
