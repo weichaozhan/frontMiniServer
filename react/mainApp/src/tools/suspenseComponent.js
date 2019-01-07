@@ -9,7 +9,7 @@ export default function suspenseComponent(ComponentImport) {
     render() {
       return (
         <Suspense fallback={<div>Loading...</div>}>
-          <ComponentImport />
+          <ComponentImport {...this.props} />
         </Suspense>
       )
     }
