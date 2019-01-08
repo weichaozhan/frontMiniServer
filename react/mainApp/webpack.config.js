@@ -14,11 +14,13 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, //一个匹配loaders所处理的文件的拓展名的正则表达式，这里用来匹配js和jsx文件（必须）
-        exclude: /(node_modules|bower_components)/, //屏蔽不需要处理的文件（文件夹）（可选）
-        use: {
-          loader: 'babel-loader'
-        }
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
       }, 
       {
         test: /\.(css|less)$/,
@@ -27,10 +29,17 @@ const webpackConfig = {
             loader: environment === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           },
           {
-            loader: 'css-loader'
-          }, 
+            loader: 'css-loader',
+            options: {
+              modules: 'global',
+              localIdentName: '[path][name]__[local]--[hash:base64:5]'
+            }
+          },
           {
             loader: 'less-loader'
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       }, 
@@ -45,14 +54,14 @@ const webpackConfig = {
   },
   optimization: {
     splitChunks: {
-      name: true, 
+      name: 'common', 
       chunks: 'all', 
-      minSize: 10000, 
+      minSize: 10000,
       maxInitialRequests: 5, // 首页最大并行下载数
       cacheGroups: {
         react: {
           test: (module) => {
-            return /[\\/]node_modules[\\/].*react.*/.test(module.context);
+            return /[\\/]*node_modules[\\/].*react.*/.test(module.context);
           },
           name: 'react',
           priority: 1,
@@ -60,7 +69,7 @@ const webpackConfig = {
         },
         antd: {
           test: (module) => {
-            return /[\\/]node_modules[\\/].*antd/.test(module.context);
+            return /[\\/]*node_modules[\\/].*(antd|ant-design).*/.test(module.context);
           },
           name: 'antd',
           priority: 1,
@@ -71,8 +80,8 @@ const webpackConfig = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "[name].[contentHash].css",
+      chunkFilename: "[name].[contentHash].css"
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -82,11 +91,12 @@ const webpackConfig = {
         .optimize
         .OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HashedModuleIdsPlugin()
   ],
   output: {
-    filename: '[name]-[hash].js',
-    chunkFilename: '[name].bundle.js',
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[chunkhash].js',
     //__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'

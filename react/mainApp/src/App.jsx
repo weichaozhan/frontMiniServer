@@ -1,8 +1,8 @@
 import React from 'react'
-import 'antd/dist/antd.css'
 import { Link } from 'react-router-dom'
 
 import Router from './router/Index.jsx'
+import { Button } from 'antd'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
 			<div className="content-show">
-				I'm App
+				<Button style={{margin: '30px'}}>I'm App</Button>
         <p>
           <Link to="/test">test link</Link>
 				</p>

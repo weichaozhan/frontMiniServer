@@ -56,7 +56,10 @@ class Test extends React.Component {
             <a href="javascript:;" onClick={this.clickAction} data-record={JSON.stringify(record)}>action</a>
           )}></Column>
         </Table>
-        <p className="ttt">Test Text</p>
+        <div className="ttt">
+          <p>Test Text</p>
+          <span>span text</span>
+        </div>
       </div>
     )
   }

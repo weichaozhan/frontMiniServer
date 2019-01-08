@@ -3,8 +3,8 @@
     [
       "env",
       {
-        "targets": ">= ie9",
-        "useBuiltIns": "usage"
+        "targets": ">= ie8",
+        "useBuiltIns": "entry"
       }
     ],
     "react",
