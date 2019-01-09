@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Loading extends React.Component {
   constructor() {
-		super()
+		super();
     this.state = {
-    }
+    };
   }
 
   componentDidMount() {
@@ -23,4 +23,4 @@ class Loading extends React.Component {
   }
 }
 
-export default withRouter(Loading)
+export default withRouter(Loading);

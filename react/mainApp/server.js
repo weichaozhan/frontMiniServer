@@ -1,18 +1,18 @@
-const express = require('express')
-const webpack = require('webpack')
+const express = require('express');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 // const proxy = require('http-proxy-middleware');
-const history = require('connect-history-api-fallback')
+const history = require('connect-history-api-fallback');
 
-const port = process.env.PORT || 3000
-const app = express()
+const port = process.env.PORT || 3000;
+const app = express();
 const config = merge(require('./webpack.config.js'), {
-  devtool: 'eval-source-map'
+  devtool: 'eval-source-map',
 })
-const compiler = webpack(config)
-app.use(history())
+const compiler = webpack(config);
+app.use(history());
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
@@ -28,5 +28,5 @@ app.use(webpackHotMiddleware(compiler));
 
 // Serve the files on port 3000.
 app.listen(port, function () {
-  console.log('Example app listening on port 3000!\n')
+  console.log('Example app listening on port 3000!\n');
 });

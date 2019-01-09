@@ -1,29 +1,43 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { Button, Table } from 'antd'
 const { Column } = Table
 
-import './test.less'
+import './test.less';
+import * as testAction from '../../store/actions/testActions';
 
 class Test extends React.Component {
-  constructor() {
-		super()
-    this.state = {
-    }
+  static defaultProps = {
+    name: 'test',
+  }
 
-    this.clickAction = this.clickAction.bind(this)
+  static propTypes = {
+    name: PropTypes.string,
+  };
+
+  constructor() {
+		super();
+    this.state = {
+    };
+
+    this.clickAction = this.clickAction.bind(this);
   }
 
   componentDidMount() {
+    setTimeout(() => {
+      this.props.dotest('test done');
+    }, 3000);
   }
 
   componentWillUnmount() {
   }
 
   clickAction(e) {
-    const record = JSON.parse(e.currentTarget.dataset.record) 
-    console.log(record)
+    const record = JSON.parse(e.currentTarget.dataset.record);
+    console.log(record);
   }
 
   render() {
@@ -35,12 +49,12 @@ class Test extends React.Component {
       address: 'address',
       test: 'test',
       value: 'value',
-      phone: 'phone'
-    }]
-
+      phone: 'phone',
+    }];
+    
     return (
-      <div>
-        <Button>Button</Button>
+      <div className="wrapper--Test">
+        <Button style={{marginBottom: '30px'}}>{this.props.testRedux.subData}</Button>
         <Table 
         scroll={{x:1000, y: 500}}
         dataSource={data}>
@@ -65,4 +79,30 @@ class Test extends React.Component {
   }
 }
 
-export default withRouter(Test)
+/**
+ * @description action 作为 props 绑定
+ * @param {Function} dispatch dispatch
+ */
+const mapDispatchToProps = (
+    dispatch, 
+    // ownProps,
+  ) => {
+  return {
+    dotest: (...args) => dispatch(testAction.dotest(...args)),
+  };
+};
+
+/**
+ * @description 绑定 store 到props
+ * @param {Object} state store 
+ */
+const mapStateToProps = (
+    state, 
+    // ownProps
+  ) => {
+  return {
+    ...state,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Test));

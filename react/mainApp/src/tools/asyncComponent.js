@@ -10,15 +10,15 @@ export default function asyncComponent(importComponent) {
       super(props);
 
       this.state = {
-        component: null
+        component: null,
       };
     }
 
     async componentDidMount() {
-			const lazyC = await importComponent()
+			const lazyC = await importComponent();
 
       this.setState({
-        component: lazyC.default
+        component: lazyC.default,
       });
 
     }
