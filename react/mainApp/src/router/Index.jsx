@@ -4,7 +4,7 @@ import {lazy} from 'react';
 
 import suspenseComponent from '../tools/suspenseComponent';
 // import asyncComponent from '../tools/asyncComponent';
-import routes from './routes.js';
+import routes from '@/router/routes.js';
 
 class Router extends React.Component {
   constructor() {

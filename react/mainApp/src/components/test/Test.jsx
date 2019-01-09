@@ -7,7 +7,7 @@ import { Button, Table } from 'antd';
 const { Column } = Table;
 
 import './test.less';
-import * as testAction from '../../store/actions/testActions';
+import * as testAction from '@/store/actions/testActions';
 
 class Test extends React.Component {
   static defaultProps = {

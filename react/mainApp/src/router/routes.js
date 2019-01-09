@@ -1,6 +1,6 @@
 import {lazy} from 'react';
 
-import suspenseComponent from '../tools/suspenseComponent';
+import suspenseComponent from '@/tools/suspenseComponent';
 
 export default [
   {

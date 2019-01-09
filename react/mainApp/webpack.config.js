@@ -2,6 +2,7 @@ const webpack = require('webpack'); //访问内置的插件
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const environment = process.env.NODE_ENV;
 
 const mainEntry = ['./src/index.js'];
@@ -17,6 +18,7 @@ const webpackConfig = {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
+        include: path.resolve(__dirname, 'src'),
         use: [
           {
             loader: 'eslint-loader',
@@ -26,9 +28,13 @@ const webpackConfig = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
+        include: path.resolve(__dirname, 'src'),
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'cache-loader',
+          },
+          {
+            loader: 'babel-loader?cacheDirectory',
           },
         ],
       }, 
@@ -62,6 +68,11 @@ const webpackConfig = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    },
+  },
   optimization: {
     splitChunks: {
       name: 'common', 
@@ -89,6 +100,12 @@ const webpackConfig = {
     }
   },
   plugins: [
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`\n\nAPP running here http://localhost:${process.env.PORT}`],
+      },
+      clearConsole: false,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contentHash].css',
       chunkFilename: '[name].[contentHash].css',
