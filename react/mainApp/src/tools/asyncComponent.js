@@ -28,7 +28,7 @@ export default function asyncComponent(importComponent) {
 
       return LazyC ? <LazyC {...this.props} /> : null;
     }
-  }
+  };
 
   return AsyncComponent;
 }

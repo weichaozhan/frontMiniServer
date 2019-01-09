@@ -1,9 +1,9 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 
 class Test extends React.Component {
   constructor() {
-		super();
+    super();
 		
     this.state = {
     };
@@ -20,7 +20,7 @@ class Test extends React.Component {
       <div className="ttt">
         <span>No Match</span>
       </div>
-    )
+    );
   }
 }
 

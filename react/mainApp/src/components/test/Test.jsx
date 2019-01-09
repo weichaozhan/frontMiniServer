@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { Button, Table } from 'antd'
-const { Column } = Table
+import { Button, Table } from 'antd';
+const { Column } = Table;
 
 import './test.less';
 import * as testAction from '../../store/actions/testActions';
@@ -19,7 +19,7 @@ class Test extends React.Component {
   };
 
   constructor() {
-		super();
+    super();
     this.state = {
     };
 
@@ -55,9 +55,7 @@ class Test extends React.Component {
     return (
       <div className="wrapper--Test">
         <Button style={{marginBottom: '30px'}}>{this.props.testRedux.subData}</Button>
-        <Table 
-        scroll={{x:1000, y: 500}}
-        dataSource={data}>
+        <Table scroll={{x:1000, y: 500}} dataSource={data}>
           <Column title="id" dataIndex="id"></Column>
           <Column title="key" dataIndex="key"></Column>
           <Column title="name" dataIndex="name" ></Column>
@@ -75,7 +73,7 @@ class Test extends React.Component {
           <span>span text</span>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -84,9 +82,9 @@ class Test extends React.Component {
  * @param {Function} dispatch dispatch
  */
 const mapDispatchToProps = (
-    dispatch, 
-    // ownProps,
-  ) => {
+  dispatch, 
+  // ownProps,
+) => {
   return {
     dotest: (...args) => dispatch(testAction.dotest(...args)),
   };
@@ -97,9 +95,9 @@ const mapDispatchToProps = (
  * @param {Object} state store 
  */
 const mapStateToProps = (
-    state, 
-    // ownProps
-  ) => {
+  state, 
+  // ownProps
+) => {
   return {
     ...state,
   };

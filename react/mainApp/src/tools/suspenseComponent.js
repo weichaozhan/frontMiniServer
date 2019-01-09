@@ -12,9 +12,9 @@ export default function suspenseComponent(ComponentImport) {
         <Suspense fallback={<Loading />}>
           <ComponentImport {...this.props} />
         </Suspense>
-      )
+      );
     }
-  }
+  };
 
   return SuspenseComponent;
 };

@@ -28,7 +28,7 @@ class App extends React.Component {
           <Router/>
         </div>
       </Provider>
-    )
+    );
   }
 };
 

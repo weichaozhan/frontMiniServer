@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 class Loading extends React.Component {
   constructor() {
-		super();
+    super();
     this.state = {
     };
   }
@@ -19,7 +19,7 @@ class Loading extends React.Component {
       <div>
         <span>loading</span>
       </div>
-    )
+    );
   }
 }
 
