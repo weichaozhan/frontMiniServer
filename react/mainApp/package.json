@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development PORT=3000 node server.js --hot",
+    "build": "cross-env NODE_ENV=production webpack --mode production --progress --config webpack.prod.js",
+    "dev": "cross-env NODE_ENV=development PORT=3000 node server.js --hot --color --watch --progress",
     "mock": "node mockServer/server.js",
     "start": "concurrently \"npm run dev\" \"npm run mock\""
   },
@@ -24,6 +24,7 @@
     "babel-runtime": "^6.26.0",
     "boom": "^7.3.0",
     "cache-loader": "^2.0.1",
+    "chalk": "^2.4.2",
     "clean-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "concurrently": "^4.1.0",

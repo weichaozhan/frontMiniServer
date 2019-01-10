@@ -12,6 +12,7 @@ const config = merge(require('./webpack.config.js'), {
   devtool: 'cheap-module-source-map',
 })
 const compiler = webpack(config);
+
 app.use(history());
 
 app.use(webpackDevMiddleware(compiler, {
