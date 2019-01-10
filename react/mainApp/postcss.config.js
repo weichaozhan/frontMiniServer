@@ -1,7 +1,8 @@
 module.exports = {
   plugins: {
-    'postcss-cssnext': {
-      autoprefixer: {browsers: 'ie >= 9'},
+    'postcss-preset-env': {
+      stage: 0,
+      browsers: 'ie >= 10',
     },
   },
 };

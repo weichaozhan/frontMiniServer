@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development PORT=3000 node server.js --hot"
+    "dev": "cross-env NODE_ENV=development PORT=3000 node server.js --hot",
+    "mock": "node mockServer/server.js",
+    "start": "concurrently \"npm run dev\" \"npm run mock\""
   },
   "author": "",
   "license": "ISC",
@@ -20,9 +22,11 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
+    "boom": "^7.3.0",
     "cache-loader": "^2.0.1",
     "clean-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
+    "concurrently": "^4.1.0",
     "connect-history-api-fallback": "^1.5.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
@@ -33,13 +37,19 @@
     "happypack": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.19.1",
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.6",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa2-cors": "^2.0.6",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.5.0",
+    "mockjs": "^1.0.1-beta3",
     "nodemon": "^1.18.9",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.28.2",
@@ -53,9 +63,11 @@
   },
   "dependencies": {
     "antd": "^3.11.6",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "history": "^4.7.2",
+    "qs": "^6.6.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
@@ -65,6 +77,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie <= 9"
   ]
 }

@@ -3,7 +3,7 @@
     [
       "env",
       {
-        "targets": ">= ie8",
+        "targets": ">= ie10",
         "useBuiltIns": "entry"
       }
     ],

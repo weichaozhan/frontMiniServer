@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 class Loading extends React.Component {
   constructor() {
@@ -23,4 +22,4 @@ class Loading extends React.Component {
   }
 }
 
-export default withRouter(Loading);
+export default Loading;

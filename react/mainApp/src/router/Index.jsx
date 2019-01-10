@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import {lazy} from 'react';
 
 import suspenseComponent from '../tools/suspenseComponent';
-// import asyncComponent from '../tools/asyncComponent';
 import routes from '@/router/routes.js';
 
 class Router extends React.Component {
@@ -99,20 +98,6 @@ class Router extends React.Component {
             :
             <Route component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/NoMatch.jsx')))} />
         }
-        {/* <Route path="/" exact component={asyncComponent(() => import('../components/Test.jsx'))} />
-        {
-          this.state.routes.map(item => {
-            return (
-              <Route path={item.path} component={item.component} key={item.path} />
-            )
-          })
-        }
-        {
-          isLoading ?
-          <Route component={asyncComponent(() => import('../components/Loading.jsx'))} />
-          :
-          <Route component={asyncComponent(() => import('../components/NoMatch.jsx'))} />
-        } */}
       </Switch>
     );
   }

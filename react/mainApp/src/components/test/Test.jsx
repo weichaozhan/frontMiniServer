@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Button, Table } from 'antd';
@@ -103,4 +102,4 @@ const mapStateToProps = (
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Test));
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
