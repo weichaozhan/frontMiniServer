@@ -16,9 +16,13 @@ const config = merge(require('./webpack.config.js'), {
 })
 
 config.plugins = config.plugins.concat([
-  new FriendlyErrorsWebpackPlugin(),
   new SimpleProgressWebpackPlugin({
     format: 'compact',
+  }),
+  new FriendlyErrorsWebpackPlugin({
+    compilationSuccessInfo: {
+      notes: [chalk.green(`Application is running here http://localhost:${process.env.PORT}`)],
+    },
   }),
 ]);
 
@@ -40,4 +44,5 @@ app.use(webpackHotMiddleware(compiler));
 // app.use(proxy(['/api'], proxyObj));
 
 // Serve the files on port 3000.
-app.listen(port, function() {});
+app.listen(port, function() {
+});
