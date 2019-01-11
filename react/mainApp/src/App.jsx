@@ -18,13 +18,6 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <div className="content-show">
-          <Button style={{margin: '30px 0'}}>I'm App</Button>
-          <p>
-            <Link to="/test">test link</Link>
-          </p>
-          <p>
-            <Link to="/module/test">module link</Link>
-          </p>
           <Router/>
         </div>
       </Provider>

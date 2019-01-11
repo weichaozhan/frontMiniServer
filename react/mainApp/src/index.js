@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory  } from 'history';
 
 import App from './App.jsx';
+import './index.less';
 
 export const history = createBrowserHistory();
 

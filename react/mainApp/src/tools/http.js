@@ -12,7 +12,7 @@ import Qs from 'qs';
 
 let baseUrl = '';
 if (process.env.NODE_ENV === 'production') {
-  baseUrl = 'http://operation.api.819.kc/account/authList';
+  baseUrl = 'http://operation.api.819.kc/';
 } else {
   baseUrl = 'http://localhost:9091';
 }

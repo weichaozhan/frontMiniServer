@@ -60,10 +60,31 @@ const webpackConfig = {
       }, 
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
-      }, {
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              fallback: 'file-loader',
+              name: '[name][contentHash:8].[ext]',
+              outputPath: 'assets/images/',
+            }
+          },
+        ],
+      }, 
+      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src', 'img:data-src', 'audio:src'],
+            minimize: true,
+          },
+        },
       },
     ],
   },
