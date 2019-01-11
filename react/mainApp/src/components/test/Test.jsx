@@ -8,6 +8,10 @@ const { Column } = Table;
 import './test.less';
 import * as testAction from '@/store/actions/testActions';
 
+import {
+  testAPI,
+} from '@/api/testAPI.js';
+
 class Test extends React.Component {
   static defaultProps = {
     name: 'test',
@@ -23,6 +27,13 @@ class Test extends React.Component {
     };
 
     this.clickAction = this.clickAction.bind(this);
+  }
+
+  componentWillMount() {
+    testAPI()
+      .then(res => {
+        console.log(res);
+      });
   }
 
   componentDidMount() {

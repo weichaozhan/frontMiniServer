@@ -14,7 +14,7 @@ let baseUrl = '';
 if (process.env.NODE_ENV === 'production') {
   baseUrl = 'http://operation.api.819.kc/account/authList';
 } else {
-  baseUrl = 'http://operation.api.819.kc/account/authList';
+  baseUrl = 'http://localhost:9091';
 }
 
 const http = (config = {}) => {
@@ -41,7 +41,7 @@ const http = (config = {}) => {
 
   const newRequest = new Promise((resolve, reject) => {
     axios(Object.assign({}, config, {
-      baseURL: baseUrl,
+      baseURL: config.baseUrl || baseUrl,
       url: config.url,
       method: config.method || 'get',
       headers: headers,
