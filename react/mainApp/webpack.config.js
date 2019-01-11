@@ -1,10 +1,7 @@
 const webpack = require('webpack'); //访问内置的插件
 const path = require('path');
-const chalk = require('chalk');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackBar = require('webpackbar');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const environment = process.env.NODE_ENV;
 
 const mainEntry = ['./src/index.js'];
@@ -102,16 +99,6 @@ const webpackConfig = {
     }
   },
   plugins: [
-    // 显示进度
-    new WebpackBar({
-      color: 'green',
-      profile: true
-    }),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        notes: [chalk.green.bold(`APP running here http://localhost:${process.env.PORT}`)],
-      },
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contentHash].css',
       chunkFilename: '[name].[contentHash].css',
