@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  Button,
+} from 'antd';
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,7 +12,10 @@ class Login extends React.Component {
 
   render () {
     return <div>
-      登陆
+      <a href="https:/www.baidu.com">baidu</a>
+      <p>dsfsdlhl</p>
+      <Button>登陆</Button>
+      <Button type="danger">Danger</Button>
     </div>;
   }
 }

@@ -7,6 +7,9 @@ import { createBrowserHistory  } from 'history';
 import App from './App.jsx';
 import './index.less';
 
+import 'antd/dist/antd.less';
+import './antd.theme.less';
+
 export const history = createBrowserHistory();
 
 ReactDOM.render(
