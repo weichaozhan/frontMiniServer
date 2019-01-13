@@ -11,10 +11,13 @@
     "stage-2"
   ],
   "plugins": [
-    ["babel-plugin-import", {
+    [
+      "import", 
+      {
       "libraryName": "antd",
       "libraryDirectory": "es",
       "style": "true",
-    }]
+      }
+    ]
   ]
 }

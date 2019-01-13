@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const environment = process.env.NODE_ENV;
 
 const mainEntry = ['./src/index.js'];
+const themes = require('./antd.themes.js');
 
 const webpackConfig = {
   mode: environment,
@@ -54,9 +55,7 @@ const webpackConfig = {
             loader: 'less-loader',
             options: {
               modifyVars: {
-                'primary-color': '#1DA57A',
-                'link-color': '#1DA57A',
-                'border-radius-base': '2px',
+                ...themes.theme1,
               },
               javascriptEnabled: true,
             },
