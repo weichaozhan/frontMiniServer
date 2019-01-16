@@ -6,7 +6,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const SimpleProgressWebpackPlugin = require( 'simple-progress-webpack-plugin' );
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+// const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 // const proxy = require('http-proxy-middleware');
 const history = require('connect-history-api-fallback');
 
@@ -25,9 +25,9 @@ config.plugins = config.plugins.concat([
       notes: [chalk.green(`Application is running here http://localhost:${process.env.PORT}`)],
     },
   }),
-  new OpenBrowserPlugin({ 
-    url: `http://localhost:${process.env.PORT}`, 
-  }),
+  // new OpenBrowserPlugin({ 
+  //   url: `http://localhost:${process.env.PORT}`, 
+  // }),
 ]);
 
 const compiler = webpack(config);

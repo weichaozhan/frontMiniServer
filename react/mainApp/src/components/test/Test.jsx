@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Button, Table } from 'antd';
 const { Column } = Table;
 
+import Steps from '../stepsC/Index.jsx';
 import './test.less';
 import * as testAction from '@/store/actions/testActions';
 
@@ -64,6 +65,27 @@ class Test extends React.Component {
     
     return (
       <div className="wrapper--Test">
+        <Steps steps={[
+          {
+            isError: true,
+            text: '第一步',
+          },
+          {
+            text: '第二步',
+          },
+          {
+            text: '第三步',
+          },
+          {
+            text: '第四步',
+          },
+          {
+            text: '第五步',
+          },
+          {
+            text: '第六步',
+          },
+        ]} current={2} />
         <Button style={{marginBottom: '30px'}}>{this.props.testRedux.subData}</Button>
         <Table scroll={{x:1000, y: 500}} dataSource={data}>
           <Column title="id" dataIndex="id"></Column>

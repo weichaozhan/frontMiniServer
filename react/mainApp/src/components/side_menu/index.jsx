@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LogoImg from '../../assets/images/logo.png';
 import './index.less';
 
@@ -14,7 +13,7 @@ class SideMenu extends React.Component {
 
   render () {
     return <div className="side-menu-container">
-      <img src={LogoImg}/>
+      <img src={LogoImg} width="150" height="30" />
       侧栏
     </div>;
   }

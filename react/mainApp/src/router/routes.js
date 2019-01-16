@@ -9,10 +9,6 @@ const Login=lazy(() => import('../pages/login/index.jsx'));
 const Main=lazy(() => import('../pages/main/index.jsx'));
 
 export default [
-  // {
-  //   path: '/test',
-  //   component: suspenseComponent(lazy(() => import('../components/test/Test.jsx'))),
-  // },
   {
     path: '/Login',
     component: suspenseComponent(Login),

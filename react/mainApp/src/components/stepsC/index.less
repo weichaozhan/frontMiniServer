@@ -1,0 +1,67 @@
+.steps--custom--store-client {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&.wrapper--steps__dot {
+		padding: 6px 12px 18px;
+	}
+	&.wrapper--steps__desc {
+		padding: 6px 12px 0;
+		align-items: start;
+		& > .step-desc {
+			text-align: center;
+			&.step-text-done {
+				color: @primary-color;
+			}
+			&.step-text-is-error {
+				color: @error-color;
+			}
+
+			& > span {
+				width: 30%;
+				display: inline-block;
+			}
+		}
+	}
+
+	.wrapper--step--custom--store-client {
+		&.step-comp-error {
+			& > .step--custom--store-client {
+				background: @error-color!important;
+				box-shadow: 0 0 0 6px rgba(255,102,102,0.3)!important;
+			}
+			& > i {
+				background: #CCCCCC!important;
+			}
+		}
+		.step--custom--store-client {
+			width: 30px;
+			height: 30px;
+			position: relative;
+			background: #ccc;
+			border-radius: 30px;
+			&.step-finished {
+				background: @primary-color;
+				box-shadow: 0 0 0 6px rgba(85,134,255,0.3);
+			}
+		}
+		& > i {
+			width: 100%;
+			height: 4px;
+			margin: -16px 0 0 16px;
+			display: block;
+			background: #ccc;
+			z-index: -1;
+			&.line-will-go {
+				background-image: linear-gradient(90deg, #5586FF 0%, #CCCCCC 67%);
+			}
+			&.line-isgone {
+				background: @primary-color;
+			}
+			&.last-line {
+				width: 0;
+			}
+		}
+	} 
+}

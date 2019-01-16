@@ -13,11 +13,16 @@ const Page1 =lazy(() => import('../pages/page1/index.jsx'));
 
 const routes=[
   {
+    path: '/test',
+    component: suspenseComponent(lazy(() => import('../components/test/Test.jsx'))),
+  },
+  {
     path: '/page1',
     component: suspenseComponent(Page1),
   },
   {
     path: '/',
+    exact: true,
     component: suspenseComponent(Home),
   }
 ];

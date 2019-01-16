@@ -87,7 +87,7 @@ class Router extends React.Component {
     const isLoading = this.state.isLoading;
     return (
       <Switch>
-        { this.state.routes.map(item => (<Route path={item.path} component={item.component} key={item.path} />)) }
+        { this.state.routes.map(item => (<Route {...item} key={item.path} />)) }
         {
           isLoading ?
             <Route component={suspenseComponent(lazy(() => import(/* webpackPrefetch: true */'../components/Loading.jsx')))} />
