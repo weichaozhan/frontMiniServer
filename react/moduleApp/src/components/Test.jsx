@@ -1,6 +1,8 @@
 import React from 'react'
 import {withRouter} from "react-router-dom";
 
+import '../styles/test.less';
+
 class Test extends React.Component {
   constructor() {
 		super()
@@ -18,7 +20,8 @@ class Test extends React.Component {
   render() {
     return (
       <div>
-        <span>Test Text</span>
+        <div className="moduleAPP-test-bg"></div>
+        <span className="moduleAPP-text">Test Text</span>
       </div>
     )
   }

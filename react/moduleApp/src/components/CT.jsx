@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from "react-router-dom";
+import Img from '../assets/img/flyPig.jpg';
 
 class Test extends React.Component {
   constructor() {
@@ -19,6 +20,9 @@ class Test extends React.Component {
     return (
       <div>
         <span>Test CT</span>
+        <div>
+          <img width="180" src={Img}/>
+        </div>
       </div>
     )
   }

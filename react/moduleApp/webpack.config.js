@@ -31,7 +31,17 @@ const webpackConfig = {
         ]
       }, {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              fallback: 'file-loader',
+              name: '[name][contentHash:8].[ext]',
+              outputPath: 'assets/images/',
+            }
+          },
+        ],
       }, {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader']
@@ -70,7 +80,7 @@ const webpackConfig = {
     library: 'moduleApp',
     //__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
   }
 }
 
@@ -79,6 +89,10 @@ if (environment === 'development') {
     template: './src/index.html',
     minify: true
   }))
+}
+
+if (environment === 'production') {
+  webpackConfig.output.publicPath = 'http://localhost:3002/dist/';
 }
 
 module.exports = webpackConfig
