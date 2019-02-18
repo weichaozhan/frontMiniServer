@@ -2,12 +2,17 @@
  * 路由模板封装
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import {lazy} from 'react';
 
 import suspenseComponent from '../tools/suspenseComponent';
 
 class Router extends React.Component {
+  static propTypes = {
+    routeType: PropTypes.string, // 是否为顶级路由
+  };
+
   constructor() {
     super();
     this.state = {
@@ -18,7 +23,10 @@ class Router extends React.Component {
   }
 
   componentWillMount() {
-    this.load();
+    if (this.props.routeType === 'top') {
+      this.load();
+    }
+
     const {routes}=this.props;
     window.appData = window.appData ? Object.assign(window.appData, {routes}) : {
       routes,
@@ -65,6 +73,7 @@ class Router extends React.Component {
             });
           });
 
+          console.log('this.isUnmount', this.updater);
           Promise.all(pl)
             .then(() => {
               modulesLoaded.push(item);

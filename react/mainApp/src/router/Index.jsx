@@ -12,7 +12,7 @@ import RouteModule from './routeModule';
 
 class Router extends React.Component {
   render(){
-    return <RouteModule routes={routes}/>;
+    return <RouteModule routes={routes} routeType="top"/>;
   }
 } 
 

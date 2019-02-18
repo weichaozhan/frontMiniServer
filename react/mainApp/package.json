@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack --mode production --progress --config webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development PORT=3000 nodemon server.js --hot --color",
+    "dev": "cross-env NODE_ENV=development PORT=3000 node server.js --hot --color",
     "mock": "nodemon mockServer/server.js",
     "start": "concurrently \"npm run dev\" \"npm run mock\""
   },
