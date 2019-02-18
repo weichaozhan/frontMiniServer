@@ -1,0 +1,22 @@
+{
+  "name": "webcomponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.1",
+    "babel-core": "^5.8.38",
+    "babel-polyfill": "^6.26.0",
+    "mime": "^2.3.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "compression": "^1.7.3",
+    "mime": "^2.3.1"
+  }
+}

@@ -73,7 +73,6 @@ class Router extends React.Component {
             });
           });
 
-          console.log('this.isUnmount', this.updater);
           Promise.all(pl)
             .then(() => {
               modulesLoaded.push(item);
